@@ -1,11 +1,13 @@
 from django.db import models
-from django.contrib.auth.models import User as DefaultUser
+from django.contrib.auth.models import AbstractBaseUser
 
-class User(DefaultUser):
-    name = models.CharField(max_length=20, blank=True, null=True)
+class User(AbstractBaseUser):
+    username = models.CharField(max_length=20, blank=False, null=False)
+    userId = models.CharField(max_length=10, blank=False, null=False, unique=True)
     contacts = models.ManyToManyField('self')
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['email', 'password', 'name']
+
+    REQUIRED_FIELDS = ['userId', 'password', 'username']
+    USERNAME_FIELD = 'userId'
 
 class Message(models.Model):
     fromUser = models.ForeignKey(User, on_delete=models.CASCADE, related_name='fromUser')

@@ -1,11 +1,15 @@
-from django.forms import ModelForm, PasswordInput
+from django.forms import ModelForm
+from django import forms
 from . import models
 
 class UserRegistration(ModelForm):
-    passconfirm = PasswordInput()
+    passconfirm = forms.CharField(max_length=50)
 
     class Meta:
         model = models.User
-        fields = ['name', 'email', 'password', 'passconfirm']
+        fields = ['username', 'userId', 'password', 'passconfirm']
 
-    # def clean(self):
+        # doesn't work
+        labels = {
+            "passconfirm":  "password confirmation",
+        }
