@@ -1,2 +1,29 @@
-<h1>signup page</h1>
-{{form.as_p}}
+{% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+{% endblock css %}
+
+{% block content %}
+<form action="" method="post">
+  {% csrf_token %}
+  <div class="from">
+    <h3>Login to Accaunt</h3>
+    <div class="login">
+      <input type="text" placeholder="Username">
+      <input type="text" placeholder="Id" title="@E****">
+      <input type="text" placeholder="Password" title="123-456-7895">
+      <input type="text" placeholder="Password-Confirmation" title="123-456-7895">
+      <button>Sin In</button>
+    </div>
+    <div class="suggests">
+      <div class="remember">
+        <input type="checkbox" checked>
+        <span>Remmeber Mes</span>
+      </div>
+
+    </div>
+  </div>
+</form>
+{% endblock content %}
