@@ -6,8 +6,11 @@ class User(AbstractBaseUser):
     userId = models.CharField(max_length=10, blank=False, null=False, unique=True)
     contacts = models.ManyToManyField('self')
 
-    REQUIRED_FIELDS = ['userId', 'password', 'username']
+    REQUIRED_FIELDS = ['password', 'username']
     USERNAME_FIELD = 'userId'
+
+    def __str__(self):
+        return self.username
 
 class Message(models.Model):
     fromUser = models.ForeignKey(User, on_delete=models.CASCADE, related_name='fromUser')

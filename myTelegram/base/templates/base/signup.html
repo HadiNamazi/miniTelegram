@@ -9,13 +9,16 @@
 <form action="" method="post">
   {% csrf_token %}
   <div class="from">
-    <h3>Login to Accaunt</h3>
+    <h3>Signing up</h3>
     <div class="login">
-      <input type="text" placeholder="Username">
+      {% for field in form %}
+        {{field}}
+      {% endfor %}
+      <!-- <input type="text" placeholder="Username">
       <input type="text" placeholder="Id" title="@E****">
       <input type="text" placeholder="Password" title="123-456-7895">
-      <input type="text" placeholder="Password-Confirmation" title="123-456-7895">
-      <button>Sin In</button>
+      <input type="text" placeholder="Password-Confirmation" title="123-456-7895"> -->
+      <button type="submit">Sign up</button>
     </div>
     <div class="suggests">
       <div class="remember">

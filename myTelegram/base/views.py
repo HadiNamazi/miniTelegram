@@ -6,13 +6,10 @@ from django.contrib.auth import login
 from django.contrib import messages
 
 def home(req):
-    # contacts = req.user.contacts
-    # print(contacts)
     context = {}
     return render(req, 'base/home.html', context)
 
 def sign_up(req):
-    print(req.user)
     if req.user.is_authenticated:
         messages.error(req, "you're logged in already")
         return redirect('home')
