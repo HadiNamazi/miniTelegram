@@ -41,6 +41,48 @@ def sign_up(req):
             else:
                 messages.error(req, 'please enter password carefully')
 
+    # GET method
     form = forms.UserRegistration
     context = {'form': form}
     return render(req, 'base/signup.html', context)
+
+def login_page(req):
+    if req.user.is_authenticated:
+        messages.error(req, "You're already logged in.")
+        return redirect('home')
+    
+    if req.method == 'POST':
+        form = forms.UserLogin(req.POST)
+        userId = req.POST['userId']
+        password = req.POST['password']
+        try:
+            remember_me = req.POST['remember_me']
+        except:
+            remember_me = 'off'
+
+        try:
+            user = models.User.objects.get(userId=userId)
+        except:
+            # userId is invalid
+            messages.error(req, 'Your Id is invalid. try again!')
+            return redirect('login_page')
+        
+        if user.password == password:
+            # everything is ok and logging in
+            login(req, user)
+
+            # remember me checkbox
+            if remember_me == 'off':
+                    req.session.set_expiry(0)
+
+            return redirect('home')
+
+        # password is incorrect
+        messages.error(req, 'Your password is incorrect. try again!')
+        return redirect('login_page')
+
+
+    # GET method
+    form = forms.UserLogin()
+    context = {'form': form}
+    return render(req, 'base/login.html', context)
