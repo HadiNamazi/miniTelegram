@@ -9,7 +9,7 @@
 <form action="" method="post">
   {% csrf_token %}
   <div class="from">
-    <h3>Signing up</h3>
+    <h3>Sign up</h3>
     <div class="login">
       {% for field in form %}
         {% if field.label != 'Remember me' %}
@@ -26,9 +26,9 @@
         {% endfor %}
         <label for="id_remember_me">Remember me</label>
       </div>
-      <button type="submit">Sign up</button>
-
     </div>
+    <button type="submit">Sign up</button>
+    <p>Haven't you logged in yet? <a href="{% url 'login_page' %}">Login</a></p>
   </div>
 </form>
 {% endblock content %}

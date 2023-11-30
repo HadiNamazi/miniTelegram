@@ -6,8 +6,12 @@ from django.contrib.auth import login, logout
 from django.contrib import messages
 
 def home(req):
-    context = {}
-    return render(req, 'base/home.html', context)
+    if req.user.is_authenticated:
+        context = {}
+        return render(req, 'base/home.html', context)
+    
+    # if not logged in, redirect to signup page
+    return redirect('signup')
 
 def sign_up(req):
     # check if user signed up already or not
