@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from . import models, forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib import messages
 
 def home(req):
@@ -86,3 +86,7 @@ def login_page(req):
     form = forms.UserLogin()
     context = {'form': form}
     return render(req, 'base/login.html', context)
+
+def logout_user(req):
+    logout(req)
+    return redirect('home')
