@@ -12,19 +12,22 @@
     <h3>Signing up</h3>
     <div class="login">
       {% for field in form %}
-        {{field}}
+        {% if field.label != 'Remember me' %}
+          {{field}}
+        {% endif %}
       {% endfor %}
-      <!-- <input type="text" placeholder="Username">
-      <input type="text" placeholder="Id" title="@E****">
-      <input type="text" placeholder="Password" title="123-456-7895">
-      <input type="text" placeholder="Password-Confirmation" title="123-456-7895"> -->
-      <button type="submit">Sign up</button>
+      <!-- <button type="submit">Sign up</button> -->
     </div>
     <div class="suggests">
       <div class="remember">
-        <input type="checkbox" checked>
-        <span>Remmeber Mes</span>
+        {% for field in form %}
+          {% if field.label == 'Remember me' %}
+            {{field}}
+          {% endif %}
+        {% endfor %}
+        <label for="id_remember_me">Remember me</label>
       </div>
+      <button type="submit">Sign up</button>
 
     </div>
   </div>

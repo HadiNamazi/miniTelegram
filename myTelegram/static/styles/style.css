@@ -46,7 +46,7 @@ body{
     flex-direction: column;
     width: 85%;
 }
-.login input , button{
+.login input{
     margin: 10px;
     margin-left: 55px;
     padding: 15px 25px;
@@ -62,10 +62,17 @@ body{
     letter-spacing: 1px;
     text-indent: 2px;
 }
-.login button{
+.from button{
     font-family: EduSABeginner-VariableFont;
     margin-left: 135px;
     background-color: rgb(43, 111, 212);
+    margin: 10px;
+    margin-left: 55px;
+    padding: 15px 25px;
+    border: none;
+    outline: none;
+    border-radius: 125px;
+    font-size: 16px;
 
 } 
 .suggests a{

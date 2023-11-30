@@ -4,6 +4,7 @@ from . import models
 
 class UserRegistration(ModelForm):
     passconfirm = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Password confirmation'}))
+    remember_me = forms.BooleanField(required=False, initial=True)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -13,9 +14,4 @@ class UserRegistration(ModelForm):
 
     class Meta:
         model = models.User
-        fields = ['username', 'userId', 'password', 'passconfirm']
-
-        # doesn't work
-        labels = {
-            "passconfirm":  "password confirmation",
-        }
+        fields = ['username', 'userId', 'password', 'passconfirm', 'remember_me']
