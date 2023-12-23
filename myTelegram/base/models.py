@@ -19,7 +19,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):#TODO: hashing password
     username = models.CharField(max_length=20, blank=False, null=False)
     userId = models.CharField(max_length=10, blank=False, null=False, unique=True)
-    contacts = models.ManyToManyField('self')
+    contacts = models.TextField(max_length=100000, blank=True, null=True)
 
     REQUIRED_FIELDS = ['password', 'username']
     USERNAME_FIELD = 'userId'

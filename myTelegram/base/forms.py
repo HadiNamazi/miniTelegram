@@ -27,3 +27,8 @@ class UserLogin(ModelForm):
     class Meta:
         model = models.User
         fields = ['userId', 'password', 'remember_me']
+
+class message(ModelForm):
+    class Meta:
+        model = models.Message
+        fields = ['text']

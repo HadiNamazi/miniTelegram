@@ -1,11 +1,24 @@
 {% extends 'main.html' %}
 
 {% block content %}
+
 {% if request.user.is_authenticated %}
 <p>{{request.user.username}}</p>
 {% else %}
 <p>You're not logged in</p>
 {% endif %}
 
-<h1>Home</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="add_contact" placeholder="Contact's ID">
+    <button type="submit">Add contact</button>
+</form>
+
+<div>
+    {% for contact in contacts %}
+        <a href="#">{{contact}}</a>
+        <br>
+    {% endfor %}
+</div>
+
 {% endblock content %}

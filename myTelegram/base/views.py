@@ -5,9 +5,79 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout
 from django.contrib import messages
 
+# checks if contacts are repeated, returns True; otherwise returns False
+def contacts_repeatation(contacts):
+    if contacts is None:
+        return False
+    contacts_list = contacts.split(' ')
+    contacts_list = contacts_list[:-1]
+    seen = []
+    for contact in contacts_list:
+        if not contact in seen:
+            seen.append(contact)
+        else:
+            return True
+    return False
+
+# lists User object of contact IDs
+def contacts_exporter(contacts):
+    contacts_list = contacts.split(' ')
+    contacts_list = contacts_list[:-1]
+    output = []
+    for contact in contacts_list:
+        try:
+            c = models.User.objects.get(userId=contact)
+        except:
+            return 
+        output.append(c)
+    return output
+
+def id_validation(id):
+    try:
+        models.User.objects.get(userId=id)
+        return True
+    except:
+        return False
+
 def home(req):
     if req.user.is_authenticated:
-        context = {}
+
+        me = models.User.objects.get(userId=req.user.userId)
+
+        # POST method
+        if req.method == 'POST':
+
+            # contact search posted
+            try:
+                contact_id = req.POST['add_contact']
+
+                # adding contact to user contacts
+                if me.contacts is not None:
+                    temp_contacts = me.contacts + contact_id + ' '
+                else:
+                    temp_contacts = contact_id + ' '
+
+                # if user contacts was valid, save it
+                if not contacts_repeatation(temp_contacts) and id_validation(contact_id):
+                    me.contacts = temp_contacts
+                    me.save()
+
+                return redirect('home')
+
+            # sth else posted
+            except:
+                return redirect('home')
+
+
+        # GET method
+
+        # making contacts list
+        if me.contacts is not None:
+            contacts = contacts_exporter(me.contacts)
+        else:
+            contacts = []
+
+        context = {'contacts': contacts}
         return render(req, 'base/home.html', context)
     
     # if not logged in, redirect to signup page
@@ -24,13 +94,14 @@ def sign_up(req):
         form = forms.UserRegistration(req.POST)
         password = req.POST['password']
         passconfirm = req.POST['passconfirm']
+        id = req.POST['userId']
         try:
             remember_me = req.POST['remember_me']
         except:
             remember_me = 'off'
 
         # validation
-        if form.is_valid():
+        if form.is_valid() and not ' ' in id:
             if password == passconfirm:
                 # registration
                 user = form.save()
@@ -94,3 +165,8 @@ def login_page(req):
 def logout_user(req):
     logout(req)
     return redirect('home')
+
+def pv(req, id):
+        
+    context = {}
+    return render(req, 'base/pv.html', context)
