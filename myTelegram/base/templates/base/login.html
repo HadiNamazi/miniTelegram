@@ -1,34 +1,36 @@
-{% extends 'main.html' %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block css %}
-  <link rel="stylesheet" href="{% static 'styles/style.css' %}">
-{% endblock css %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     
+    </style>
+<link rel="stylesheet" href="style.css">
+</head>
 
-{% block content %}
-<form action="" method="post">
-  {% csrf_token %}
-  <div class="from">
-    <h3>Login</h3>
-    <div class="login">
-      {% for field in form %}
-        {% if field.label != 'Remember me' %}
-          {{field}}
-        {% endif %}
-      {% endfor %}
+<body>
+    <img src="./images/Telegram_logo.svg.png" alt="logo" id="logo">
+    <h1>login in to minigram</h1>
+    <div id="login">
+
+        <form action="#">
+            <p id="instruction">please enter your id and your password </p>
+            <input type="text" id="id" placeholder="enter your id here">
+            <input type="password" id="password" placeholder="enter your password here">
+            <div id="remember-me-checkbox"> <input type="checkbox" id="remember-me">
+                <label>remember me</label>
+              
+            </div>
+            <div id="next-btn">
+                <button id="next">NEXT</button>
+            </div>
+            
+        </form>
+
     </div>
-    <div class="suggests">
-      <div class="remember">
-        {% for field in form %}
-          {% if field.label == 'Remember me' %}
-            {{field}}
-          {% endif %}
-        {% endfor %}
-        <label for="id_remember_me">Remember me</label>
-      </div>
-      <button type="submit">Login</button>
+</body>
 
-    </div>
-  </div>
-</form>
-{% endblock content %}
+</html>
