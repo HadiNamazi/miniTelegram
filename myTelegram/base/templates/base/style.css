@@ -1,0 +1,88 @@
+body {
+    font-family: sans-serif;
+}
+
+#login {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5%;
+    width: 45%;
+    padding: 20px;
+    height: 100vh;
+    padding-top: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+#instruction {
+    text-align: center;
+    color: #898d90;
+
+}
+
+#id,
+#password {
+    border-radius: 10px;
+    padding: 2.5%;
+    display: block;
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #898d90;
+    margin-bottom: 2%;
+    width: 40%;
+
+}
+
+#id:hover,
+#password:hover {
+    border-color: #3390ec;
+}
+
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+}
+
+#remember-me-checkbox {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: center;
+}
+#next{
+    background-color: #3390ec;
+    border:none;
+    padding: 5%;
+    font-weight: bold;
+    font-size: medium;
+    color:#ffffff;
+    border-radius:10px;
+    width:100%;
+}
+#next:hover{
+    cursor: pointer;
+    background-color: #338feca4;
+    
+}
+#next-btn{
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 2%;
+    width:45%;
+
+}
+
+@media (max-width: 600px) {
+#id,
+#password {
+    width: 100%;
+    padding:5%;
+    margin-top:3%;
+}
+}
