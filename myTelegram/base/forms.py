@@ -11,6 +11,7 @@ class UserRegistration(ModelForm):
         self.fields['username'].widget.attrs['placeholder'] = 'Username'
         self.fields['userId'].widget.attrs['placeholder'] = 'Id'
         self.fields['password'].widget.attrs['placeholder'] = 'Password'
+        # TODO: password type should be password
 
     class Meta:
         model = models.User
