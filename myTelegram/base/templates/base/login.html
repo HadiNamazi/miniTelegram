@@ -2,39 +2,28 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
 {% endblock css %}
 
 {% block content %}
 <img src="{% static 'images/Telegram_logo.svg.png' %}" alt="logo" id="logo">
-    <h1>Log in to minigram</h1>
-    <div id="login">
+<h1>Log in to minigram</h1>
+<div id="login">
 
-        <form action="" method="post">
-            {% csrf_token %}
-            <p id="instruction">please enter your id and your password </p>
-            <!-- <input type="text" id="id" placeholder="enter your id here">
-            <input type="password" id="password" placeholder="enter your password here"> -->
-            {% for field in form %}
-                {% if field.label != 'Remember me' %}
-                    {{field}}
-                {% endif %}
-            {% endfor %}
-            <div id="remember-me-checkbox">
-                <!-- <input type="checkbox" id="remember-me"> -->
-                {% for field in form %}
-                    {% if field.label == 'Remember me' %}
-                        {{field}}
-                    {% endif %}
-                 {% endfor %}
-                 <label>remember me</label>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p id="instruction">please enter your id and your password </p>
+        <input type="text" id="id" placeholder="Id" name="userId">
+        <input type="password" id="password" placeholder="Password" name="password">
+        <div id="remember-me-checkbox">
+            <input type="checkbox" id="remember-me" name="remember_me">
+            <label>remember me</label>
+        </div>
+        <div id="next-btn">
+            <button id="next" type="submit">NEXT</button>
+        </div>
 
-            </div>
-            <div id="next-btn">
-                <button id="next">NEXT</button>
-            </div>
-            
-        </form>
+    </form>
 
-    </div>
+</div>
 {% endblock content %}

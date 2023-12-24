@@ -91,10 +91,12 @@ def sign_up(req):
 
     if req.method == 'POST':
 
-        form = forms.UserRegistration(req.POST)
+        username = req.POST['username']
         password = req.POST['password']
         passconfirm = req.POST['passconfirm']
         id = req.POST['userId']
+        form = forms.UserRegistration(username=username, password=password, passconfirm=passconfirm, id=id)
+
         try:
             remember_me = req.POST['remember_me']
         except:
@@ -167,6 +169,6 @@ def logout_user(req):
     return redirect('home')
 
 def pv(req, id):
-        
+
     context = {}
     return render(req, 'base/pv.html', context)

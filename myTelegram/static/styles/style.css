@@ -22,8 +22,8 @@ h1 {
 
 }
 
-#id_userId,
-#id_password {
+#id,
+#password {
     border-radius: 10px;
     padding: 2.5%;
     display: block;
@@ -36,8 +36,8 @@ h1 {
 
 }
 
-#id_userId:hover,
-#id_password:hover {
+#id:hover,
+#password:hover {
     border-color: #3390ec;
 }
 
@@ -79,8 +79,8 @@ img {
 }
 
 @media (max-width: 600px) {
-#id_userId,
-#id_password {
+#id,
+#ipassword {
     width: 100%;
     padding:5%;
     margin-top:3%;
