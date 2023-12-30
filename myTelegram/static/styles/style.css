@@ -1,82 +1,90 @@
-@font-face{
-    src: url("/static/fonts/Borel-Regular.ttf");
-    font-family: Borel-Regular;
+body {
+    font-family: sans-serif;
 }
-body{
-   
-    background: linear-gradient(45deg, rgba(255, 0, 150, 0.8), rgba(0, 150, 255, 0.8));
-    /* border:  solid; */
-    border-color: rgb(19, 59, 48);
-    margin: 0;
-    height: 150vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.from{
-    
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(10px);
-    border-radius: 69px;
+
+#login {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5%;
+    width: 45%;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0.1, 0.1, 0.1, 0.5);
-    width: 400px;
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    backdrop-filter: blur(5px);
-    /* border: 2px solid #ff00ff;  */
-    align-items: center;
+    height: 100vh;
+    padding-top: auto;
 }
-.from h3{
-    font-family: EduSABeginner-VariableFont;
-    font-size: 20px;
-    font-style: italic;
-    font-weight: 50px;
-    color:rgb(50, 51, 51);
-    text-indent: 10px;    
-}
-.from .login{
-    display: inline;
-    flex-direction: column;
-    width: 85%;
-}
-.login input{
-    margin: 10px;
-    margin-left: 55px;
-    padding: 15px 25px;
-    border: none;
-    outline: none;
-    border-radius: 125px;
-    font-size: 16px;
-}
-.login input{
-    background-color:rgba(113, 118, 150, 0.571) ;
-    color: rgb(240, 255, 241);
-    font-family: poppins;
-    letter-spacing: 1px;
-    text-indent: 2px;
-}
-.from button{
-    font-family: EduSABeginner-VariableFont;
-    margin-left: 135px;
-    background-color: rgb(43, 111, 212);
-    margin: 10px;
-    margin-left: 55px;
-    padding: 15px 25px;
-    border: none;
-    outline: none;
-    border-radius: 125px;
-    font-size: 16px;
 
-} 
-.suggests a{
-    border: 2px solid;
-    border-radius: 12px;
+h1 {
+    text-align: center;
+}
 
+#instruction {
+    text-align: center;
+    color: #898d90;
+
+}
+
+#id,
+#password {
+    border-radius: 10px;
+    padding: 2.5%;
+    display: block;
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #898d90;
+    margin-bottom: 2%;
+    width: 40%;
+
+}
+
+#id:hover,
+#password:hover {
+    border-color: #3390ec;
+}
+
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+}
+
+#remember-me-checkbox,
+#signup {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: center;
+}
+#next{
+    background-color: #3390ec;
+    border:none;
+    padding: 5%;
+    font-weight: bold;
+    font-size: medium;
+    color:#ffffff;
+    border-radius:10px;
+    width:100%;
+}
+#next:hover{
+    cursor: pointer;
+    background-color: #338feca4;
+    
+}
+#next-btn{
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width:45%;
+
+}
+
+@media (max-width: 600px) {
+#id,
+#ipassword {
+    width: 100%;
+    padding:5%;
+    margin-top:3%;
+}
 }
