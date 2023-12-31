@@ -91,11 +91,10 @@ def sign_up(req):
 
     if req.method == 'POST':
 
-        username = req.POST['username']
+        form = forms.UserRegistration(req.POST)
         password = req.POST['password']
         passconfirm = req.POST['passconfirm']
         id = req.POST['userId']
-        form = forms.UserRegistration(username=username, password=password, passconfirm=passconfirm, id=id)
 
         try:
             remember_me = req.POST['remember_me']
@@ -169,6 +168,7 @@ def logout_user(req):
     return redirect('home')
 
 def pv(req, id):
-
-    context = {}
+    user = models.User.objects.get(userId=id)
+    print(user.fromUser.all())
+    context = {'fromUser': user.fromUser.all(), 'toUser': user.toUser.all()}
     return render(req, 'base/pv.html', context)
